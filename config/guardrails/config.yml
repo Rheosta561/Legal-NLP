@@ -1,0 +1,23 @@
+models:
+  - type: main
+    engine: qwen
+    model: qwen/qwen3.8-27b # Runtime overrides this with GROQ_MODEL.
+    api_key_env_var: GROQ_API_KEY
+    parameters:
+      base_url: https://api.groq.com/openai/v1
+
+instructions:
+  - type: general
+    content: |
+      You are a legal NLP assistant. You can classify legal provisions using the
+      classify_legal_provision tool. Use actual tool results for all classifications.
+      Never invent labels, scores, or predictions. State that results are ML predictions,
+      not legal advice.
+
+rails:
+  input:
+    flows:
+      - self check input
+  output:
+    flows:
+      - self check output
